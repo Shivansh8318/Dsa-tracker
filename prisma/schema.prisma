@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://neondb_owner:npg_5XdfQMuEzm0F@ep-lucky-dream-adom5fsc-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  title       String
+  topics      String[] // Array of topics like "DP", "Graph", etc.
+  difficulty  Difficulty
+  source      String?  // Platform like "LeetCode", "GeeksforGeeks", etc.
+  link        String?  // URL to the problem
+  dateSolved  DateTime?
+  code        String?  // Code solution
+  explanation String?  // Markdown explanation/notes
+  tags        String[] // Additional tags
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("questions")
+}
+
+enum Difficulty {
+  Easy
+  Medium
+  Hard
+}
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  salary    String?
+  status    ApplicationStatus @default(APPLIED)
+  feedback  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("companies")
+}
+
+enum ApplicationStatus {
+  APPLIED
+  INTERVIEW_SCHEDULED
+  INTERVIEW_COMPLETED
+  SELECTED
+  REJECTED
+  OFFER_RECEIVED
+  OFFER_ACCEPTED
+  OFFER_DECLINED
+}

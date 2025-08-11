@@ -1,0 +1,45 @@
+# Node / monorepo ignores
+node_modules/
+frontend/node_modules/
+
+# Build output
+dist/
+build/
+frontend/dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Caches and temporary files
+.cache/
+.tmp/
+temp/
+*.tmp
+*.tsbuildinfo
+.vite/
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Prisma local databases (keep migrations committed)
+prisma/*.db
+prisma/*.sqlite
+prisma/*-journal
+
